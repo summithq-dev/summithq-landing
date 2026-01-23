@@ -1,209 +1,251 @@
-import Link from "next/link";
 import Image from "next/image";
 
 export default function LandingPage() {
   return (
-    <main className="min-h-screen bg-white text-slate-900">
-      {/* HERO */}
-      <section className="relative overflow-hidden">
-        {/* Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500" />
-        <div className="absolute inset-0 bg-white/70" />
+    <main className="min-h-screen bg-white">
+      {/* ================= HERO CLOUD SECTION ================= */}
+      <div
+        className="relative overflow-hidden"
+        style={{
+          backgroundImage: "url('/clouds/sky-clouds-full.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center top",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        {/* Bottom fade to white */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-white" />
 
-        <div className="relative max-w-6xl mx-auto px-6 pt-32 pb-72">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            {/* Copy */}
-            <div>
-              <h1 className="text-5xl font-semibold leading-tight">
-                One dashboard to run
-                <br />
-                your entire business
-              </h1>
+        {/* ================= HERO ================= */}
+        <section className="px-4 pt-24 pb-12 text-center sm:pt-32 sm:pb-20">
+          <h1 className="mx-auto max-w-3xl text-[38px] font-semibold leading-tight tracking-tight text-slate-900 sm:text-6xl">
+            Run your freelance business without the chaos.
+          </h1>
 
-              <p className="mt-6 text-lg text-slate-600 max-w-md">
-                Clients, projects, tasks, invoices, and taxes — without juggling
-                tools or tabs.
-              </p>
+          <p className="mx-auto mt-5 max-w-md text-base text-slate-700 sm:mt-6 sm:max-w-xl sm:text-lg">
+            Clients, projects, invoices, and taxes — finally all working
+            together.
+          </p>
+        </section>
 
-              <div className="mt-8 flex items-center gap-5">
-                <Link
-                  href="/waitlist"
-                  className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-indigo-600 text-white text-sm font-semibold shadow hover:bg-indigo-700 transition"
-                >
-                  Get early access
-                </Link>
-              </div>
+        {/* ================= DASHBOARD ================= */}
+        <section className="px-4 pt-6 sm:pt-10">
+          <div className="mx-auto max-w-[1100px]">
+            <div className="relative">
+              <div className="absolute inset-0 rounded-[40px] bg-white/40 blur-3xl" />
 
-              <p className="mt-4 text-xs text-slate-500">
-                Built for freelancers and solo business owners.
-              </p>
-            </div>
-
-            {/* HERO IMAGE */}
-            <div className="relative lg:-mr-64">
-              <div className="relative aspect-[20/9] -mb-56">
+              <div
+                className="
+                  relative
+                  overflow-hidden
+                  rounded-[36px]
+                  bg-white/55
+                  backdrop-blur-3xl
+                  ring-1 ring-white/50
+                  shadow-[0_60px_160px_rgba(15,23,42,0.35)]
+                "
+              >
                 <Image
                   src="/dashboard-hero.png"
                   alt="SummitHQ dashboard"
-                  fill
+                  width={1600}
+                  height={1000}
                   priority
-                  sizes="(max-width: 1024px) 100vw, 1200px"
-                  className="object-contain drop-shadow-[0_30px_60px_rgba(0,0,0,0.08)]"
+                  sizes="(max-width: 768px) 100vw, 1100px"
+                  className="w-full h-auto"
                 />
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* Fade hero into white */}
-        <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-b from-transparent to-white pointer-events-none" />
-      </section>
+        {/* ================= CTA ================= */}
+        <section className="px-4 pt-10 pb-32 text-center">
+          <a
+            href="/waitlist"
+            className="
+              inline-flex
+              items-center
+              justify-center
+              rounded-full
+              bg-indigo-600
+              px-14
+              py-5
+              text-base
+              font-semibold
+              text-white
+              shadow-[0_25px_80px_rgba(79,70,229,0.45)]
+              transition
+              hover:scale-[1.05]
+              hover:bg-indigo-700
+            "
+          >
+            Get Early Access
+          </a>
 
-      {/* PROBLEM */}
-      <section className="bg-white pt-32">
-        <div className="max-w-6xl mx-auto px-6 py-32">
-          <div className="grid grid-cols-1 md:grid-cols-[auto,1fr] gap-12 items-start">
-            <div className="hidden md:block w-px bg-slate-200 mt-3" />
+          <p className="mt-6 text-sm text-slate-700">
+            Built for freelancers &amp; solo business owners
+          </p>
+        </section>
+      </div>
 
-            <div className="max-w-3xl">
-              <h2 className="text-3xl font-semibold text-slate-900">
-                Running a business shouldn’t feel scattered.
-              </h2>
-
-              <p className="mt-6 text-lg text-slate-600">
-                Most freelancers and solo business owners aren’t disorganised —
-                their tools are.
-              </p>
-
-              <p className="mt-4 text-lg text-slate-600">
-                Clients in one app. Projects in another. Invoices somewhere
-                else. Taxes tracked in spreadsheets.
-              </p>
-
-              <p className="mt-4 text-lg text-slate-600">
-                Everything works — just not together.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SOLUTION */}
-      <section className="bg-white">
-        <div className="max-w-6xl mx-auto px-6 py-32">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start mb-24">
-            <h2 className="text-3xl font-semibold text-slate-900">
-              Everything you need — in one calm workspace
-            </h2>
-
-            <p className="text-lg text-slate-600 max-w-md">
-              SummitHQ replaces multiple business tools with a single dashboard
-              built for solo businesses — without clutter, noise, or feature
-              overload.
+      {/* ================= VALUE PROPS (WHITE) ================= */}
+      <section className="px-6 pb-36 pt-24 bg-white">
+        <div className="mx-auto max-w-xl space-y-20 text-center sm:max-w-5xl sm:grid sm:grid-cols-3 sm:gap-16 sm:space-y-0 sm:text-left">
+          <div>
+            <h3 className="text-xl font-semibold text-slate-900">
+              Everything in one place
+            </h3>
+            <p className="mt-4 text-base text-slate-700 leading-relaxed">
+              No more juggling tools. Clients, projects, tasks, and finances
+              live together.
             </p>
           </div>
 
-          {/* SOLUTION IMAGE */}
-          <div className="relative -mx-6 lg:-mx-48 mb-32">
-            <div className="relative aspect-[21/9]">
-              <Image
-                src="/client-workflow.png"
-                alt="Clients, projects, invoices, and taxes connected in SummitHQ"
-                fill
-                sizes="(max-width: 1024px) 100vw, 1400px"
-                className="object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.06)]"
-              />
-            </div>
-
-            {/* Fade image into slate */}
-            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-slate-50 pointer-events-none" />
+          <div>
+            <h3 className="text-xl font-semibold text-slate-900">
+              Built for freelancers
+            </h3>
+            <p className="mt-4 text-base text-slate-700 leading-relaxed">
+              Designed to reduce overwhelm, not add to it.
+            </p>
           </div>
 
-          {/* FEATURE GRID */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-8 rounded-lg ring-1 ring-slate-200">
-              <p className="font-medium">
-                Clients, projects, and tasks — connected
-              </p>
-              <p className="mt-2 text-sm text-slate-600">
-                Everything related to a client lives in one place, from work to
-                billing.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg ring-1 ring-slate-200">
-              <p className="font-medium">
-                Create invoices where the work lives
-              </p>
-              <p className="mt-2 text-sm text-slate-600">
-                Generate invoices directly from clients or projects.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg ring-1 ring-slate-200">
-              <p className="font-medium">Taxes without the stress</p>
-              <p className="mt-2 text-sm text-slate-600">
-                Track income, expenses, and tax totals automatically — no
-                spreadsheets required.
-              </p>
-            </div>
-
-            <div className="bg-white p-8 rounded-lg ring-1 ring-slate-200">
-              <p className="font-medium">See what needs attention</p>
-              <p className="mt-2 text-sm text-slate-600">
-                Know what’s drafted, sent, paid, or overdue at a glance.
-              </p>
-            </div>
+          <div>
+            <h3 className="text-xl font-semibold text-slate-900">
+              Know where you stand
+            </h3>
+            <p className="mt-4 text-base text-slate-700 leading-relaxed">
+              Instantly see what’s been sent, paid, and still outstanding.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* CLOSING CTA — MIRROR OF HERO */}
-      <section className="relative overflow-hidden">
-        {/* Gradient (same as hero) */}
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500" />
-        <div className="absolute inset-0 bg-white/70" />
-
-        {/* TOP FADE: white → transparent (reveals gradient gradually) */}
-        <div className="absolute top-0 inset-x-0 h-48 bg-gradient-to-b from-white to-transparent pointer-events-none" />
-
-        <div className="relative max-w-4xl mx-auto px-6 py-40 text-center">
-          <h2 className="text-3xl font-semibold text-slate-900">
-            Get early access to SummitHQ
+      {/* ================= INVOICES ================= */}
+      <section className="px-4 pb-32 bg-white">
+        <div className="mx-auto max-w-xl text-center">
+          <h2 className="text-2xl font-semibold text-slate-900">
+            Simple, professional invoicing
           </h2>
 
-          <p className="mt-4 text-lg text-slate-600">
-            A calmer way to run your business — from first client to tax time.
+          <p className="mt-4 text-base text-slate-700">
+            Create, send, and track invoices without spreadsheets or guesswork.
           </p>
+        </div>
 
-          <div className="mt-10">
-            <Link
-              href="/waitlist"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-indigo-600 text-white text-sm font-semibold shadow hover:bg-indigo-700 transition"
+        <div className="mx-auto mt-12 max-w-[1000px]">
+          <div className="relative">
+            <div className="absolute inset-0 rounded-[32px] bg-white/60 blur-3xl" />
+
+            <div
+              className="
+                relative
+                overflow-hidden
+                rounded-[28px]
+                bg-white
+                ring-1 ring-slate-200
+                shadow-[0_40px_120px_rgba(15,23,42,0.18)]
+              "
             >
-              Get early access
-            </Link>
+              <Image
+                src="/screens/invoices.png"
+                alt="Invoice management in SummitHQ"
+                width={1600}
+                height={1000}
+                className="w-full h-auto"
+              />
+            </div>
           </div>
-
-          <p className="mt-4 text-xs text-slate-500">
-            No credit card. Early access only.
-          </p>
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer className="border-t bg-white">
-        <div className="max-w-6xl mx-auto px-6 py-8 text-sm text-slate-500 flex justify-between">
-          <span>© SummitHQ</span>
+      {/* ================= TAXES ================= */}
+      <section className="px-4 pb-40 bg-white">
+        <div className="mx-auto max-w-xl text-center">
+          <h2 className="text-2xl font-semibold text-slate-900">
+            Stay on top of taxes
+          </h2>
 
-          <div className="flex gap-4">
-            <Link href="/privacy" className="hover:text-slate-700 transition">
-              Privacy
-            </Link>
-            <span>·</span>
-            <Link href="/contact" className="hover:text-slate-700 transition">
-              Contact
-            </Link>
+          <p className="mt-4 text-base text-slate-700">
+            See what you owe, what’s set aside, and what’s safe to spend.
+          </p>
+        </div>
+
+        <div className="mx-auto mt-12 max-w-[1000px]">
+          <div className="relative">
+            <div className="absolute inset-0 rounded-[32px] bg-white/60 blur-3xl" />
+
+            <div
+              className="
+                relative
+                overflow-hidden
+                rounded-[28px]
+                bg-white
+                ring-1 ring-slate-200
+                shadow-[0_40px_120px_rgba(15,23,42,0.18)]
+              "
+            >
+              <Image
+                src="/screens/taxes.png"
+                alt="Tax overview and tracking in SummitHQ"
+                width={1600}
+                height={1000}
+                className="w-full h-auto"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+      {/* ================= FINAL CTA + FOOTER ================= */}
+      <footer className="px-4 pb-20 pt-24">
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 className="text-2xl font-semibold text-slate-900 sm:text-3xl">
+            Take control of your freelance business
+          </h2>
+
+          <p className="mx-auto mt-4 max-w-xl text-base text-slate-700">
+            Clients, projects, invoices, and taxes — all working together in one
+            calm, simple system.
+          </p>
+
+          <a
+            href="/waitlist"
+            className="
+        mt-10
+        inline-flex
+        items-center
+        justify-center
+        rounded-full
+        bg-indigo-600
+        px-14
+        py-5
+        text-base
+        font-semibold
+        text-white
+        shadow-[0_25px_80px_rgba(79,70,229,0.45)]
+        transition
+        hover:scale-[1.05]
+        hover:bg-indigo-700
+      "
+          >
+            Get Early Access
+          </a>
+        </div>
+
+        <div className="mx-auto mt-20 max-w-5xl border-t border-white/40 pt-8">
+          <div className="flex flex-col items-center justify-between gap-6 text-sm text-slate-600 sm:flex-row">
+            <p>© {new Date().getFullYear()} SummitHQ</p>
+
+            <div className="flex items-center gap-6">
+              <a href="/contact" className="transition hover:text-slate-900">
+                Contact
+              </a>
+
+              <a href="/privacy" className="transition hover:text-slate-900">
+                Privacy
+              </a>
+            </div>
           </div>
         </div>
       </footer>

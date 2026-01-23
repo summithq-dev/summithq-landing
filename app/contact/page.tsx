@@ -1,11 +1,35 @@
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-100 to-pink-100 flex items-center justify-center">
-      <main className="max-w-3xl w-full px-6">
-        <div className="bg-white rounded-2xl ring-1 ring-slate-200 p-8 md:p-12 text-center">
+    <main
+      className="relative min-h-screen overflow-hidden flex items-center justify-center px-6"
+      style={{
+        backgroundImage: "url('/clouds/sky-clouds-full.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center top",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <div className="relative w-full max-w-3xl">
+        {/* Glow */}
+        <div className="absolute inset-0 rounded-[40px] bg-white/40 blur-3xl" />
+
+        {/* Glass card */}
+        <div
+          className="
+            relative
+            rounded-[32px]
+            bg-white/70
+            backdrop-blur-3xl
+            ring-1 ring-white/60
+            shadow-[0_40px_120px_rgba(15,23,42,0.25)]
+            p-8
+            md:p-12
+            text-center
+          "
+        >
           <h1 className="text-3xl font-semibold text-slate-900">Contact</h1>
 
-          <p className="mt-4 text-slate-600">
+          <p className="mt-4 text-slate-700">
             Have a question, feedback, or want to get in touch?
           </p>
 
@@ -13,12 +37,19 @@ export default function ContactPage() {
 
           <a
             href="mailto:support@summithq.dev"
-            className="mt-2 inline-block text-lg font-medium text-indigo-600 hover:underline"
+            className="
+              mt-2
+              inline-block
+              text-lg
+              font-medium
+              text-indigo-600
+              hover:underline
+            "
           >
             support@summithq.dev
           </a>
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
