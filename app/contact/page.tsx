@@ -17,7 +17,7 @@ export default function ContactPage() {
         <div
           className="
             relative
-            rounded-[32px]
+            rounded-4xl
             bg-white/70
             backdrop-blur-3xl
             ring-1 ring-white/60
@@ -36,7 +36,7 @@ export default function ContactPage() {
           <p className="mt-6 text-slate-600">Email us at:</p>
 
           <a
-            href="mailto:support@summithq.dev"
+            href="mailto:support@summithq.co.uk"
             className="
               mt-2
               inline-block
@@ -46,7 +46,7 @@ export default function ContactPage() {
               hover:underline
             "
           >
-            support@summithq.dev
+            support@summithq.co.uk
           </a>
         </div>
       </div>

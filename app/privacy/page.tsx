@@ -17,7 +17,7 @@ export default function PrivacyPage() {
         <div
           className="
             relative
-            rounded-[32px]
+            rounded-4xl
             bg-white/70
             backdrop-blur-3xl
             ring-1 ring-white/60

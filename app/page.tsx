@@ -14,7 +14,7 @@ export default function LandingPage() {
         }}
       >
         {/* Bottom fade to white */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-white" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-linear-to-b from-transparent to-white" />
 
         {/* ================= HERO ================= */}
         <section className="px-4 pt-24 pb-12 text-center sm:pt-32 sm:pb-20">
@@ -30,7 +30,7 @@ export default function LandingPage() {
 
         {/* ================= DASHBOARD ================= */}
         <section className="px-4 pt-6 sm:pt-10">
-          <div className="mx-auto max-w-[1100px]">
+          <div className="mx-auto max-w-275">
             <div className="relative">
               <div className="absolute inset-0 rounded-[40px] bg-white/40 blur-3xl" />
 
@@ -134,9 +134,9 @@ export default function LandingPage() {
           </p>
         </div>
 
-        <div className="mx-auto mt-12 max-w-[1000px]">
+        <div className="mx-auto mt-12 max-w-250">
           <div className="relative">
-            <div className="absolute inset-0 rounded-[32px] bg-white/60 blur-3xl" />
+            <div className="absolute inset-0 rounded-4xl bg-white/60 blur-3xl" />
 
             <div
               className="
@@ -172,9 +172,9 @@ export default function LandingPage() {
           </p>
         </div>
 
-        <div className="mx-auto mt-12 max-w-[1000px]">
+        <div className="mx-auto mt-12 max-w-250">
           <div className="relative">
-            <div className="absolute inset-0 rounded-[32px] bg-white/60 blur-3xl" />
+            <div className="absolute inset-0 rounded-4xl bg-white/60 blur-3xl" />
 
             <div
               className="
@@ -235,7 +235,7 @@ export default function LandingPage() {
 
         <div className="mx-auto mt-20 max-w-5xl border-t border-white/40 pt-8">
           <div className="flex flex-col items-center justify-between gap-6 text-sm text-slate-600 sm:flex-row">
-            <p>© {new Date().getFullYear()} SummitHQ</p>
+            <p>© {new Date().getFullYear()} SummitHQ Ltd</p>
 
             <div className="flex items-center gap-6">
               <a href="/contact" className="transition hover:text-slate-900">
@@ -245,7 +245,18 @@ export default function LandingPage() {
               <a href="/privacy" className="transition hover:text-slate-900">
                 Privacy
               </a>
+
+              <a href="/terms" className="transition hover:text-slate-900">
+                Terms
+              </a>
             </div>
+          </div>
+
+          <div className="mt-6 text-center text-sm text-slate-400 sm:text-left">
+            <p>SummitHQ Ltd</p>
+            <p>Registered in England and Wales</p>
+            <p>Company number 17036574</p>
+            <p>Registered office: 118 Hall Lane, Walsall Wood, Walsall, England, WS9 9AP</p>
           </div>
         </div>
       </footer>

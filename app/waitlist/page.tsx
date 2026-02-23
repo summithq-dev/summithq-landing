@@ -40,7 +40,7 @@ export default function WaitlistPage() {
       >
         <div className="relative w-full max-w-md text-center">
           {/* Glow */}
-          <div className="absolute inset-0 rounded-[32px] bg-white/40 blur-3xl" />
+          <div className="absolute inset-0 rounded-4xl bg-white/40 blur-3xl" />
 
           {/* Glass card */}
           <div
@@ -107,7 +107,7 @@ export default function WaitlistPage() {
     >
       <div className="relative w-full max-w-md">
         {/* Glow */}
-        <div className="absolute inset-0 rounded-[32px] bg-white/40 blur-3xl" />
+        <div className="absolute inset-0 rounded-4xl bg-white/40 blur-3xl" />
 
         {/* Glass card */}
         <form
