@@ -82,7 +82,7 @@ export default function LandingPage() {
               hover:bg-indigo-700
             "
           >
-            Get Early Access
+            Start Free
           </a>
 
           <p className="mt-6 text-sm text-slate-700">
@@ -231,7 +231,7 @@ export default function LandingPage() {
         hover:bg-indigo-700
       "
           >
-            Get Early Access
+            Create Your Free Account
           </a>
         </div>
 
