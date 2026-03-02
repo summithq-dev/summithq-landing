@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+const APP_URL = "https://app.summithq.co.uk";
+
 export default function LandingPage() {
   return (
     <main className="min-h-screen bg-white">
@@ -62,7 +64,7 @@ export default function LandingPage() {
         {/* ================= CTA ================= */}
         <section className="px-4 pt-10 pb-32 text-center">
           <a
-            href="/waitlist"
+            href={`${APP_URL}/signup`}
             className="
               inline-flex
               items-center
@@ -210,7 +212,7 @@ export default function LandingPage() {
           </p>
 
           <a
-            href="/waitlist"
+            href={`${APP_URL}/signup`}
             className="
         mt-10
         inline-flex
