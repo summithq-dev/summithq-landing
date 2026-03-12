@@ -154,7 +154,7 @@ export default function LandingPage() {
             </a>
             <a
               href="https://app.summithq.co.uk/login"
-              className="hidden text-sm text-slate-600 transition hover:text-slate-900 sm:block"
+              className="text-sm text-slate-600 transition hover:text-slate-900"
             >
               Log in
             </a>
