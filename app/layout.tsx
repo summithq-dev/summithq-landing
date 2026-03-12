@@ -3,8 +3,9 @@ import { Toaster } from "sonner";
 import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = {
-  title: "SummitHQ Dashboard",
-  description: "Modern business dashboard",
+  title: "SummitHQ — Profit-first project management for freelancers",
+  description:
+    "Track projects, invoices, expenses and profit in one place. Know exactly how profitable every client project is — without spreadsheets.",
 };
 
 export default function RootLayout({
