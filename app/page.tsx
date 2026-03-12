@@ -126,16 +126,18 @@ function FeatureSections({
 
 export default function LandingPage() {
   return (
-    <main
-      className="min-h-screen text-slate-900"
-      style={{
-        backgroundImage:
-          "linear-gradient(rgba(255,255,255,0.60), rgba(255,255,255,0.60)), url('/clouds/sky-clouds-full.png')",
-        backgroundSize: "cover",
-        backgroundAttachment: "fixed",
-        backgroundPosition: "center top",
-      }}
-    >
+    <main className="relative min-h-screen text-slate-900">
+      {/* Cloud background — fixed element avoids iOS background-attachment bug */}
+      <div className="pointer-events-none fixed inset-0 -z-10" aria-hidden="true">
+        <Image
+          src="/clouds/sky-clouds-full.png"
+          alt=""
+          fill
+          className="object-cover object-top"
+          priority
+        />
+        <div className="absolute inset-0 bg-white/60" />
+      </div>
       {/* ===== NAV ===== */}
       <nav className="sticky top-0 z-50 border-b border-slate-100 bg-white/90 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
@@ -149,6 +151,12 @@ export default function LandingPage() {
               className="hidden text-sm text-slate-600 transition hover:text-slate-900 sm:block"
             >
               Contact
+            </a>
+            <a
+              href="https://app.summithq.co.uk/login"
+              className="hidden text-sm text-slate-600 transition hover:text-slate-900 sm:block"
+            >
+              Log in
             </a>
             <a
               href={NAV_CTA}

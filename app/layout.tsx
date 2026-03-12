@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="bg-slate-50 overflow-x-hidden">
+    <html lang="en" className="overflow-x-hidden">
       <body className="min-h-screen overflow-x-hidden">
         {children}
         <Toaster richColors position="top-right" />
