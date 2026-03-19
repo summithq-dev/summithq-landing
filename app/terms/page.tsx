@@ -1,10 +1,14 @@
+import { Nav } from "@/app/components/Nav";
+
 export const metadata = {
   title: "Terms of Service | SummitHQ",
 };
 
 export default function TermsPage() {
   return (
-    <main
+    <>
+      <Nav />
+      <main
       className="relative min-h-screen px-6 py-20"
       style={{
         backgroundImage: "url('/clouds/sky-clouds-full.png')",
@@ -586,6 +590,7 @@ export default function TermsPage() {
           </section>
         </div>
       </div>
-    </main>
+      </main>
+    </>
   );
 }

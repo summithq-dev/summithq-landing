@@ -1,74 +1,47 @@
 import Image from "next/image";
 import { AnimatedSection } from "./components/AnimatedSection";
 import { Screenshot } from "./components/Screenshot";
+import { Nav } from "./components/Nav";
 
 const NAV_CTA = "https://app.summithq.co.uk/signup";
 
-const sectionsTop = [
+const featureSections = [
   {
-    headline: "See exactly how profitable every project is",
-    body: "Every project has its own financial overview. See what you've invoiced, what you've been paid, what you've spent, and your actual profit — calculated automatically.",
+    headline: "See the real profit on every project",
+    body: "Open any project and instantly see what you've invoiced, what's been paid, what you've spent, and your actual profit — calculated automatically.",
     points: [
-      "Track project revenue and expenses",
-      "See profit margin on every project",
-      "Monitor outstanding invoices per project",
+      "Project value, revenue and expenses in one view",
+      "Profit margin calculated for you",
+      "Outstanding invoices tracked per project",
     ],
-    screenshot: "/screens/project-financials.png",
+    screenshot: "/screens/hero.png",
     alt: "Project financial overview in SummitHQ",
   },
   {
-    headline: "Stay on budget and protect your margins",
-    body: "Set a budget for any project and track spending in real time. SummitHQ shows how much is left and flags when you're close to the limit.",
-    screenshot: "/screens/budget-vs-actual.png",
-    alt: "Budget vs actual tracker in SummitHQ",
-  },
-  {
-    headline: "Keep the work moving forward",
-    body: "Organise project tasks into simple stages — Pending, In Progress, and Done. Always know what's been completed and what's still to do.",
-    screenshot: "/screens/task-board.png",
-    alt: "Project task board in SummitHQ",
-  },
-  {
-    headline: "Send invoices and track every payment",
-    body: "Create and send invoices directly from SummitHQ. See what's been paid, what's outstanding, and what's overdue — across all your clients.",
+    headline: "Know exactly what's paid and what's outstanding",
+    body: "Create and send invoices in seconds. See every invoice — paid, outstanding, overdue — across all your clients in one place.",
     screenshot: "/screens/invoices-new.png",
     alt: "Invoices page in SummitHQ",
   },
   {
-    headline: "Track every business expense",
-    body: "Log expenses and categorise spending as you go. Understand where your money is going and how it affects the profitability of your work.",
+    headline: "Track every cost that eats into your margin",
+    body: "Log expenses against projects as you go. See your total spend, what's VAT-reclaimable, and exactly how much each cost is affecting your profit.",
     screenshot: "/screens/expenses.png",
     alt: "Expenses dashboard in SummitHQ",
   },
-];
-
-const sectionsBottom = [
   {
-    headline: "Know what's happening across your business",
-    body: "Every invoice sent, payment received, task completed and expense logged is tracked automatically. One clear view of all recent activity.",
-    screenshot: "/screens/activity.png",
-    alt: "Activity timeline in SummitHQ",
-  },
-  {
-    headline: "Manage all your client projects in one place",
-    body: "See the status, value, progress and profitability of every project at a glance. Understand how your client work is performing.",
-    screenshot: "/screens/projects-overview.png",
-    alt: "Projects overview in SummitHQ",
+    headline: "Your whole business, at a glance",
+    body: "The SummitHQ dashboard shows income, expenses, net profit, outstanding invoices, and business health — all in one view. No switching tabs, no manual calculations.",
+    screenshot: "/screens/business-dashboard.png",
+    alt: "SummitHQ business dashboard",
   },
 ];
 
-
-function FeatureSections({
-  items,
-  indexOffset = 0,
-}: {
-  items: typeof sectionsTop;
-  indexOffset?: number;
-}) {
+function FeatureSections({ items }: { items: typeof featureSections }) {
   return (
     <div className="divide-y divide-slate-100/70">
       {items.map((section, i) => {
-        const isEven = (i + indexOffset) % 2 === 0;
+        const isEven = i % 2 === 0;
         return (
           <section key={i} className="px-6 py-20 sm:py-28">
             <div
@@ -127,7 +100,7 @@ function FeatureSections({
 export default function LandingPage() {
   return (
     <main className="relative min-h-screen text-slate-900">
-      {/* Cloud background — fixed element avoids iOS background-attachment bug */}
+      {/* Cloud background */}
       <div className="pointer-events-none fixed inset-0 -z-10" aria-hidden="true">
         <Image
           src="/clouds/sky-clouds-full.png"
@@ -138,51 +111,24 @@ export default function LandingPage() {
         />
         <div className="absolute inset-0 bg-white/60" />
       </div>
-      {/* ===== NAV ===== */}
-      <nav className="sticky top-0 z-50 border-b border-slate-100 bg-white/90 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <span className="text-lg font-semibold tracking-tight text-slate-900">
-            SummitHQ
-          </span>
 
-          <div className="flex items-center gap-4">
-            <a
-              href="/contact"
-              className="hidden text-sm text-slate-600 transition hover:text-slate-900 sm:block"
-            >
-              Contact
-            </a>
-            <a
-              href="https://app.summithq.co.uk/login"
-              className="text-sm text-slate-600 transition hover:text-slate-900"
-            >
-              Log in
-            </a>
-            <a
-              href={NAV_CTA}
-              className="rounded-full bg-slate-900 px-5 py-2 text-sm font-medium text-white transition hover:bg-slate-700"
-            >
-              Sign up for free
-            </a>
-          </div>
-        </div>
-      </nav>
+      <Nav />
 
       {/* ===== HERO ===== */}
       <section className="px-6 pt-24 pb-16 text-center sm:pt-32 sm:pb-20">
         <AnimatedSection className="mx-auto max-w-3xl">
-          {/* Audience identifier */}
           <p className="mb-5 text-sm font-medium uppercase tracking-widest text-indigo-500">
-            For freelancers and solo consultants
+            For freelancers &amp; consultants
           </p>
 
           <h1 className="text-4xl font-semibold leading-[1.15] tracking-tight text-slate-900 sm:text-[56px]">
-            Know exactly how profitable every client project is
+            That £8,000 project —{" "}
+            <span className="text-indigo-600">what did you actually make?</span>
           </h1>
 
           <p className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-slate-600">
-            Track projects, invoices, expenses and profit — without
-            spreadsheets.
+            SummitHQ shows you exactly what you earned from every client project
+            — after expenses, after invoices, in real time.
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -223,7 +169,7 @@ export default function LandingPage() {
           >
             <Image
               src="/screens/hero.png"
-              alt="SummitHQ project financial dashboard"
+              alt="SummitHQ project financial overview showing profit"
               width={1600}
               height={1000}
               priority
@@ -234,116 +180,126 @@ export default function LandingPage() {
         </AnimatedSection>
       </section>
 
-      {/* ===== PROBLEM SECTION ===== */}
-      <section id="problem" className="px-6 py-20 sm:py-28">
+      {/* ===== PAIN SECTION ===== */}
+      <section className="px-6 py-20 sm:py-28">
         <AnimatedSection className="mx-auto max-w-2xl text-center">
           <h2 className="text-2xl font-semibold leading-snug text-slate-900 sm:text-3xl">
-            Running your freelance business shouldn&apos;t require spreadsheets
+            You&apos;re probably not as sure as you think
           </h2>
 
           <p className="mt-5 text-base leading-relaxed text-slate-600">
-            Most freelancers manage their business across a mix of tools that
-            don&apos;t talk to each other. Invoices in one place. Expenses
-            somewhere else. Project tasks in another tool. And profitability
-            tracked manually — if at all.
+            You charged £8k. But what did you spend on tools, contractors, or
+            software for that project? What&apos;s still outstanding? What did
+            you actually pocket?
           </p>
 
           <p className="mt-4 text-base leading-relaxed text-slate-600">
-            It&apos;s hard to know which projects are actually making money, what
-            invoices are outstanding, or how your business is really performing.
+            Most freelancers have a rough idea. Invoices are in one place,
+            expenses in another, and profit is never really calculated at all.
           </p>
 
           <p className="mt-6 text-base font-medium text-slate-800">
-            SummitHQ brings it all together in one clear system.
+            SummitHQ gives you the exact number.
+          </p>
+        </AnimatedSection>
+      </section>
+
+      {/* ===== FEATURE SECTIONS ===== */}
+      <FeatureSections items={featureSections} />
+
+      {/* ===== REALISATION SECTION ===== */}
+      <section className="px-6 py-20 sm:py-28">
+        <AnimatedSection className="mx-auto max-w-2xl text-center">
+          <p className="text-sm font-medium uppercase tracking-widest text-indigo-500">
+            The maths you never do
           </p>
 
-          <div className="mt-10 grid grid-cols-2 gap-3 text-left sm:grid-cols-4">
+          <h2 className="mt-4 text-2xl font-semibold leading-snug text-slate-900 sm:text-3xl">
+            That £10,000 project? You actually made £3,040.
+          </h2>
+
+          <p className="mt-5 text-base leading-relaxed text-slate-600">
+            SummitHQ does this automatically for every project — so you always
+            know what you&apos;re actually earning, not just what you&apos;ve invoiced.
+          </p>
+        </AnimatedSection>
+
+        <AnimatedSection className="mx-auto mt-12 max-w-lg" delay={0.1}>
+          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
             {[
-              "Project tracking",
-              "Invoicing",
-              "Expenses",
-              "Profit visibility",
-            ].map((item) => (
+              { label: "Project value", value: "£10,000", muted: false, subtract: false },
+              { label: "Expenses", value: "−£1,000", muted: false, subtract: true },
+              { label: "Still outstanding", value: "−£4,240", muted: false, subtract: true },
+            ].map((row, i) => (
               <div
-                key={item}
-                className="rounded-xl border border-slate-200 bg-white/80 px-4 py-3 text-sm font-medium text-slate-700"
+                key={i}
+                className="flex items-center justify-between border-b border-slate-100 px-6 py-4"
               >
-                {item}
+                <span className="text-sm text-slate-600">{row.label}</span>
+                <span className={`text-sm font-medium ${row.subtract ? "text-red-500" : "text-slate-900"}`}>
+                  {row.value}
+                </span>
+              </div>
+            ))}
+            <div className="flex items-center justify-between bg-green-50 px-6 py-5">
+              <span className="text-sm font-semibold text-slate-900">Profit</span>
+              <span className="text-xl font-bold text-green-700">£3,040</span>
+            </div>
+          </div>
+        </AnimatedSection>
+      </section>
+
+      {/* ===== BENEFITS ===== */}
+      <section className="px-6 py-20 sm:py-28">
+        <AnimatedSection className="mx-auto max-w-4xl">
+          <h2 className="text-center text-2xl font-semibold leading-snug text-slate-900 sm:text-3xl">
+            When you know your numbers, everything gets easier
+          </h2>
+
+          <div className="mt-12 grid gap-6 sm:grid-cols-3">
+            {[
+              {
+                title: "Quote with confidence",
+                body: "See your real margins on past projects before pricing the next one. Stop undercharging.",
+              },
+              {
+                title: "Chase what matters",
+                body: "Outstanding invoices are always visible. Know exactly who owes you, and how much.",
+              },
+              {
+                title: "Less guesswork, less stress",
+                body: "One clear view of your finances instead of scattered spreadsheets and rough estimates.",
+              },
+            ].map((benefit) => (
+              <div
+                key={benefit.title}
+                className="rounded-2xl border border-slate-200 bg-white/80 px-6 py-7"
+              >
+                <h3 className="text-base font-semibold text-slate-900">
+                  {benefit.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                  {benefit.body}
+                </p>
               </div>
             ))}
           </div>
         </AnimatedSection>
       </section>
 
-      {/* ===== FEATURE SECTIONS (top) ===== */}
-      <FeatureSections items={sectionsTop} indexOffset={0} />
-
-      {/* ===== WHOLE PRODUCT SECTION ===== */}
-      <section className="px-6 py-20 sm:py-28">
-        <div className="mx-auto max-w-6xl">
-          <AnimatedSection className="mb-12 text-center sm:mb-16">
-            <h2 className="text-2xl font-semibold leading-snug text-slate-900 sm:text-3xl">
-              Your entire business in one place
-            </h2>
-            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-slate-600">
-              The SummitHQ dashboard combines project management and financial
-              tracking in a single view. See your income, expenses, profit,
-              outstanding invoices and business health — without switching tabs.
-            </p>
-
-            <div className="mx-auto mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm text-slate-500">
-              {["Income", "Expenses", "Net profit", "Outstanding invoices", "Business health score"].map(
-                (item) => (
-                  <span key={item} className="flex items-center gap-1.5">
-                    <span className="h-1.5 w-1.5 rounded-full bg-indigo-400" />
-                    {item}
-                  </span>
-                )
-              )}
-            </div>
-          </AnimatedSection>
-
-          <AnimatedSection delay={0.1}>
-            <div
-              className="
-                overflow-hidden
-                rounded-[28px]
-                bg-white
-                ring-1 ring-slate-200
-                shadow-[0_60px_160px_rgba(15,23,42,0.15)]
-              "
-            >
-              <Image
-                src="/screens/business-dashboard.png"
-                alt="SummitHQ business dashboard"
-                width={1600}
-                height={1000}
-                sizes="(max-width: 768px) 100vw, 1200px"
-                className="w-full h-auto"
-              />
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* ===== FEATURE SECTIONS (bottom) ===== */}
-      <FeatureSections items={sectionsBottom} indexOffset={1} />
-
       {/* ===== SOCIAL PROOF ===== */}
       <section className="px-6 py-20 sm:py-24">
         <AnimatedSection className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">
-            Built for freelancers managing client projects
+            What freelancers say
           </p>
 
           <blockquote className="mt-8 text-xl font-medium leading-relaxed text-slate-800 sm:text-2xl">
-            &ldquo;SummitHQ gives me instant clarity on which projects are
-            actually making money.&rdquo;
+            &ldquo;I always knew roughly what I was earning. SummitHQ showed me
+            I was leaving more on the table than I thought.&rdquo;
           </blockquote>
 
-          <p className="mt-4 text-sm text-slate-500">
-            Freelance Shopify developer
-          </p>
+          <p className="mt-4 text-sm text-slate-500">Freelance web developer</p>
         </AnimatedSection>
       </section>
 
@@ -351,12 +307,12 @@ export default function LandingPage() {
       <section className="px-6 py-28 text-center">
         <AnimatedSection className="mx-auto max-w-2xl">
           <h2 className="text-3xl font-semibold leading-snug text-slate-900 sm:text-4xl">
-            Run your freelance business with clarity
+            Stop guessing what you&apos;re actually earning
           </h2>
 
           <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-slate-600">
-            SummitHQ gives you a clear view of your projects, finances and
-            profitability — without spreadsheets.
+            SummitHQ gives every freelancer a clear, live view of their project
+            finances. Free to start.
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -377,7 +333,6 @@ export default function LandingPage() {
             >
               Sign up for free
             </a>
-
           </div>
         </AnimatedSection>
       </section>

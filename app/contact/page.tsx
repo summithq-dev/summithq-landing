@@ -1,5 +1,9 @@
+import { Nav } from "@/app/components/Nav";
+
 export default function ContactPage() {
   return (
+    <>
+      <Nav />
     <main
       className="relative min-h-screen overflow-hidden flex items-center justify-center px-6"
       style={{
@@ -51,5 +55,6 @@ export default function ContactPage() {
         </div>
       </div>
     </main>
+    </>
   );
 }

@@ -1,10 +1,14 @@
+import { Nav } from "@/app/components/Nav";
+
 export const metadata = {
   title: "Privacy Policy | SummitHQ",
 };
 
 export default function PrivacyPage() {
   return (
-    <main
+    <>
+      <Nav />
+      <main
       className="relative min-h-screen px-6 py-20"
       style={{
         backgroundImage: "url('/clouds/sky-clouds-full.png')",
@@ -421,6 +425,7 @@ export default function PrivacyPage() {
           </section>
         </div>
       </div>
-    </main>
+      </main>
+    </>
   );
 }
