@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { AnimatedSection } from "./components/AnimatedSection";
 import { Screenshot } from "./components/Screenshot";
 import { Nav } from "./components/Nav";
@@ -117,54 +116,81 @@ const testimonials = [
 ];
 
 function TestimonialsSection() {
-  const [index, setIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
+  return (
+    <section className="px-6 py-20 sm:py-24">
+      <AnimatedSection className="mx-auto max-w-5xl">
+        <p className="mb-10 text-center text-xs font-semibold uppercase tracking-widest text-slate-400">
+          What freelancers say
+        </p>
+        <div className="grid gap-6 sm:grid-cols-3">
+          {testimonials.map((t) => (
+            <div key={t.author} className="rounded-2xl border border-slate-200 bg-white/80 px-6 py-7">
+              <blockquote className="text-base font-medium leading-relaxed text-slate-800">
+                &ldquo;{t.quote}&rdquo;
+              </blockquote>
+              <p className="mt-4 text-sm text-slate-500">{t.author}</p>
+            </div>
+          ))}
+        </div>
+      </AnimatedSection>
+    </section>
+  );
+}
 
-  function paginate(newDirection: number) {
-    setDirection(newDirection);
-    setIndex((i) => (i + newDirection + testimonials.length) % testimonials.length);
-  }
+const faqs = [
+  {
+    q: "Is this just another tool I have to keep updated?",
+    a: "No. SummitHQ does the work for you. Log a project, add invoices and expenses as you go, and your profit is calculated automatically. There's no manual reconciliation or data entry routine to maintain.",
+  },
+  {
+    q: "What does free actually mean?",
+    a: "Free means no credit card and no time limit — your account won't expire. The free plan gives you enough to see exactly what SummitHQ does and whether it's right for you. Paid plans unlock higher limits and additional features when you're ready to go further.",
+  },
+  {
+    q: "How long does setup take?",
+    a: "Most freelancers are up and running in under 5 minutes. Create an account, add your first project, and your financial overview is ready. No integrations to configure, no historical data to import.",
+  },
+  {
+    q: "Do I need to be good with numbers or accounting?",
+    a: "Not at all. SummitHQ does the maths for you. If you can read a number, you can use it. We built it specifically for freelancers who want clarity — not another accounting package.",
+  },
+  {
+    q: "Is my financial data safe?",
+    a: "Yes. Your data is encrypted in transit and at rest. We never share or sell your information. You can export or delete your data at any time.",
+  },
+];
+
+function FAQSection() {
+  const [open, setOpen] = useState<number | null>(null);
 
   return (
     <section className="px-6 py-20 sm:py-24">
-      <AnimatedSection className="mx-auto max-w-2xl text-center">
-        <p className="text-xs font-semibold uppercase tracking-widest text-slate-400">
-          What freelancers say
+      <AnimatedSection className="mx-auto max-w-2xl">
+        <p className="mb-3 text-center text-xs font-semibold uppercase tracking-widest text-gray-400">
+          Common questions
         </p>
-
-        <div className="relative mt-8 overflow-hidden">
-          <AnimatePresence mode="wait" custom={direction}>
-            <motion.div
-              key={index}
-              custom={direction}
-              initial={{ opacity: 0, x: direction * 60 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: direction * -60 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.1}
-              onDragEnd={(_, info) => {
-                if (info.offset.x < -50) paginate(1);
-                else if (info.offset.x > 50) paginate(-1);
-              }}
-            >
-              <blockquote className="cursor-grab select-none text-xl font-medium leading-relaxed text-slate-800 sm:text-2xl active:cursor-grabbing">
-                &ldquo;{testimonials[index].quote}&rdquo;
-              </blockquote>
-              <p className="mt-4 text-sm text-slate-500">{testimonials[index].author}</p>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* Dot indicators */}
-        <div className="mt-8 flex justify-center gap-2">
-          {testimonials.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => { setDirection(i > index ? 1 : -1); setIndex(i); }}
-              className={`h-1.5 rounded-full transition-all duration-300 ${i === index ? "w-6 bg-slate-700" : "w-1.5 bg-slate-300"}`}
-            />
+        <h2 className="mb-10 text-center text-2xl font-semibold text-gray-900 sm:text-3xl">
+          Everything you need to know
+        </h2>
+        <div className="divide-y divide-slate-100">
+          {faqs.map((faq, i) => (
+            <div key={i}>
+              <button
+                onClick={() => setOpen(open === i ? null : i)}
+                className="flex w-full items-center justify-between gap-4 py-5 text-left"
+              >
+                <span className="text-base font-medium text-slate-900">{faq.q}</span>
+                <svg
+                  className={`h-5 w-5 shrink-0 text-slate-400 transition-transform duration-200 ${open === i ? "rotate-180" : ""}`}
+                  viewBox="0 0 20 20" fill="none"
+                >
+                  <path d="M5 7.5l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+              {open === i && (
+                <p className="pb-5 text-sm leading-relaxed text-slate-600">{faq.a}</p>
+              )}
+            </div>
           ))}
         </div>
       </AnimatedSection>
@@ -174,7 +200,7 @@ function TestimonialsSection() {
 
 export default function LandingPage() {
   return (
-    <main className="relative min-h-screen text-slate-900">
+    <main className="relative min-h-screen pb-20 text-slate-900 sm:pb-0">
       {/* Background */}
       <div className="pointer-events-none fixed inset-0 -z-10" aria-hidden="true">
         {/* Base gradient */}
@@ -200,36 +226,43 @@ export default function LandingPage() {
           {/* Left: Text */}
           <AnimatedSection className="lg:pr-0">
             <p className="mb-4 text-sm text-gray-500">
-              SummitHQ — Business clarity for freelancers
+              SummitHQ — Project profit tracking for freelancers
             </p>
 
             <h1 className="mb-6 text-4xl font-bold leading-tight tracking-tighter text-gray-900 md:text-5xl">
-              Finally know exactly what your business is making.
+              Your project paid £10k. But what did you actually make?
             </h1>
 
             <p className="mb-5 text-lg leading-relaxed text-gray-700">
-              No more digging through spreadsheets and bank statements. See your real profit, automatically.
+              Most freelancers track revenue. SummitHQ shows you real project profit — after expenses, after time, automatically.
             </p>
 
             <a
               href={NAV_CTA}
               className="inline-block rounded-full bg-indigo-600 px-7 py-3.5 text-sm font-semibold text-white shadow-[0_8px_32px_rgba(79,70,229,0.35)] transition hover:bg-indigo-700"
             >
-              Get your free financial dashboard →
+              See your real project profit, free →
             </a>
 
             <p className="mt-2 text-sm text-gray-500">
               No credit card • Takes 2 minutes
             </p>
 
-            <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 shadow-sm">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
+            <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-400">
+              <span className="flex items-center gap-1.5">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-indigo-50 text-xs font-semibold text-indigo-600">1</span>
+                Create your account
               </span>
-              <p className="text-sm font-medium text-gray-600">
-                Used by <span className="text-gray-900">5,000+ freelancers</span> who finally understand their business
-              </p>
+              <span className="text-gray-300">→</span>
+              <span className="flex items-center gap-1.5">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-indigo-50 text-xs font-semibold text-indigo-600">2</span>
+                Add your first project
+              </span>
+              <span className="text-gray-300">→</span>
+              <span className="flex items-center gap-1.5">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-indigo-50 text-xs font-semibold text-indigo-600">3</span>
+                See your real profit instantly
+              </span>
             </div>
 
           </AnimatedSection>
@@ -243,8 +276,8 @@ export default function LandingPage() {
             />
             <div className="overflow-hidden rounded-3xl border border-gray-200/80 bg-white shadow-2xl lg:-translate-y-4">
               <Image
-                src="/hero-dashboard.png"
-                alt="SummitHQ business dashboard — financial snapshot for freelancers"
+                src="/screens/project-profit-v2.png"
+                alt="SummitHQ project profit overview — see exactly what you made on every project"
                 width={1366}
                 height={900}
                 priority
@@ -259,124 +292,42 @@ export default function LandingPage() {
 
       {/* ===== PROBLEM SECTION ===== */}
       <section className="px-6 py-24">
-        <div className="mx-auto grid max-w-[1100px] grid-cols-1 items-center gap-12 lg:grid-cols-[460px_1fr]">
+        <div className="mx-auto grid max-w-[1100px] grid-cols-1 items-center gap-16 lg:grid-cols-[460px_1fr]">
 
           {/* Left: Text */}
-          <AnimatedSection className="space-y-5">
-            <h2 className="mb-10 text-3xl font-semibold leading-snug text-gray-900 md:text-4xl">
-              Everything looks fine on the surface.<br />
-              <span className="font-medium text-gray-500">Until you try to understand your numbers.</span>
+          <AnimatedSection className="space-y-6">
+            <h2 className="text-3xl font-semibold leading-snug text-gray-900 md:text-4xl">
+              You&apos;re not bad with money.<br />
+              <span className="font-medium text-gray-500">You just never have the right numbers.</span>
             </h2>
-            <p className="mb-4 text-lg leading-relaxed text-gray-600">
-              But behind the scenes, your business is spread across tools that don&apos;t talk to each other.
+            <p className="text-lg leading-relaxed text-gray-600">
+              Work comes in. Invoices go out. Money hits your account. It feels fine.
             </p>
-            <p className="text-lg font-medium text-gray-800">
-              So you never get a clear picture.
+            <p className="text-lg leading-relaxed text-gray-600">
+              But which projects were actually worth it? Which clients cost you more than they paid? Are you charging enough? What&apos;s left after tax?
+            </p>
+            <p className="text-lg font-semibold text-gray-900">
+              Most freelancers never find out. They just keep busy and hope.
             </p>
           </AnimatedSection>
 
-          {/* Right: Tool cards — controlled messy layout */}
+          {/* Right: The mental math scenario */}
           <AnimatedSection delay={0.1}>
-            <div className="flex gap-2 sm:gap-4">
-
-              {/* Column A — standard width, starts mid */}
-              <div className="flex flex-1 flex-col gap-2 sm:gap-5 sm:pt-8">
-
-                {/* Google Sheets */}
-                <div className="flex flex-col gap-2 rounded-xl border border-gray-200 bg-white p-3 sm:p-5 shadow-md transition hover:-translate-y-0.5 hover:shadow-lg">
-                  <div className="flex items-center gap-2">
-                    <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none">
-                      <rect width="24" height="24" rx="4" fill="#0F9D58"/>
-                      <rect x="6" y="6" width="12" height="2" rx="0.5" fill="white" opacity="0.9"/>
-                      <rect x="6" y="10" width="12" height="2" rx="0.5" fill="white" opacity="0.7"/>
-                      <rect x="6" y="14" width="8" height="2" rx="0.5" fill="white" opacity="0.7"/>
-                    </svg>
-                    <span className="hidden text-xs text-gray-500 sm:inline">Google Sheets</span>
-                  </div>
-                  <p className="text-xs text-gray-800 sm:text-sm">Expenses tracker</p>
-                  <span className="text-[10px] text-gray-400">Manual</span>
+            <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-lg sm:p-10">
+              <p className="mb-6 text-sm font-semibold uppercase tracking-widest text-gray-400">Sound familiar?</p>
+              <div className="space-y-3">
+                <p className="text-base text-gray-800 sm:text-lg">A project wraps up. You invoiced <span className="font-semibold">£6,000.</span></p>
+                <div className="space-y-2 border-l-2 border-red-100 pl-5 text-sm text-gray-500 sm:text-base">
+                  <p>— £400 in software and tools</p>
+                  <p>— £800 for a contractor you brought in</p>
+                  <p>— A 10% discount to close the deal</p>
+                  <p>— 6 hours of revisions that weren&apos;t scoped</p>
                 </div>
-
-                {/* Stripe — dimmed */}
-                <div className="flex flex-col gap-2 rounded-xl border border-gray-200 bg-white p-3 sm:p-5 opacity-80 shadow-md">
-                  <div className="flex items-center gap-2">
-                    <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none">
-                      <rect width="24" height="24" rx="4" fill="#635BFF"/>
-                      <path d="M10.5 9.5c0-.8.7-1.1 1.8-.9 1.5.3 3 1 4 1.8V7c-1.3-.5-2.6-.8-4-.8-3.3 0-5.5 1.7-5.5 4.5 0 4.4 6 3.7 6 5.6 0 .9-.8 1.2-2 1-1.6-.3-3.2-1.1-4.3-2v3.4c1.4.6 2.8.9 4.3.9 3.4 0 5.7-1.7 5.7-4.5-.1-4.7-6.1-3.9-6-5.6z" fill="white"/>
-                    </svg>
-                    <span className="hidden text-xs text-gray-500 sm:inline">Stripe</span>
-                  </div>
-                  <p className="text-xs text-gray-800 sm:text-sm">Payments</p>
-                  <span className="text-[10px] text-gray-400">Separate</span>
-                </div>
-
+                <p className="pt-3 text-lg font-semibold text-gray-900 sm:text-xl">
+                  So what did you actually make?
+                </p>
               </div>
-
-              {/* Column B — wide card size, starts at top */}
-              <div className="flex w-[42%] flex-col gap-2 sm:gap-5">
-
-                {/* Notion */}
-                <div className="flex flex-col gap-2 rounded-xl border border-gray-200 bg-white p-3 sm:p-5 shadow-md transition hover:-translate-y-0.5 hover:shadow-lg">
-                  <div className="flex items-center gap-2">
-                    <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none">
-                      <rect width="24" height="24" rx="4" fill="#191919"/>
-                      <text x="7.5" y="16" fontSize="9" fontWeight="700" fill="white" fontFamily="serif">N</text>
-                    </svg>
-                    <span className="hidden text-xs text-gray-500 sm:inline">Notion</span>
-                  </div>
-                  <p className="text-xs text-gray-800 sm:text-sm">Project notes</p>
-                  <span className="text-[10px] text-gray-400">Not synced</span>
-                </div>
-
-                {/* Gmail */}
-                <div className="flex flex-col gap-2 rounded-xl border border-gray-200 bg-white p-3 sm:p-5 shadow-md transition hover:-translate-y-0.5 hover:shadow-lg">
-                  <div className="flex items-center gap-2">
-                    <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none">
-                      <rect width="24" height="24" rx="4" fill="#EA4335"/>
-                      <path d="M4 8l8 5 8-5" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
-                      <rect x="4" y="8" width="16" height="9" rx="1" stroke="white" strokeWidth="1.5" fill="none"/>
-                    </svg>
-                    <span className="hidden text-xs text-gray-500 sm:inline">Gmail</span>
-                  </div>
-                  <p className="text-xs text-gray-800 sm:text-sm">Client comms</p>
-                  <span className="text-[10px] text-gray-400">Separate</span>
-                </div>
-
-                {/* Trello */}
-                <div className="flex flex-col gap-2 rounded-xl border border-gray-200 bg-white p-3 sm:p-5 shadow-md transition hover:-translate-y-0.5 hover:shadow-lg">
-                  <div className="flex items-center gap-2">
-                    <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none">
-                      <rect width="24" height="24" rx="4" fill="#0052CC"/>
-                      <rect x="5" y="5" width="5" height="9" rx="1" fill="white"/>
-                      <rect x="14" y="5" width="5" height="6" rx="1" fill="white"/>
-                    </svg>
-                    <span className="hidden text-xs text-gray-500 sm:inline">Trello</span>
-                  </div>
-                  <p className="text-xs text-gray-800 sm:text-sm">Somewhere…</p>
-                  <span className="text-[10px] text-gray-400">Not synced</span>
-                </div>
-
-              </div>
-
-              {/* Column C — standard width, starts low */}
-              <div className="flex flex-1 flex-col gap-2 sm:gap-5 sm:pt-12">
-
-                {/* QuickBooks */}
-                <div className="flex flex-col gap-2 rounded-xl border border-gray-200 bg-white p-3 sm:p-5 shadow-md transition hover:-translate-y-0.5 hover:shadow-lg">
-                  <div className="flex items-center gap-2">
-                    <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24" fill="none">
-                      <rect width="24" height="24" rx="4" fill="#2CA01C"/>
-                      <circle cx="12" cy="12" r="5" stroke="white" strokeWidth="1.8" fill="none"/>
-                      <circle cx="12" cy="12" r="2" fill="white"/>
-                    </svg>
-                    <span className="hidden text-xs text-gray-500 sm:inline">QuickBooks</span>
-                  </div>
-                  <p className="text-xs text-gray-800 sm:text-sm">No idea</p>
-                  <span className="text-[10px] text-gray-400">Manual</span>
-                </div>
-
-              </div>
-
+              <p className="mt-6 text-sm text-gray-400">If you had to think about it — that&apos;s the problem.</p>
             </div>
           </AnimatedSection>
 
@@ -387,13 +338,13 @@ export default function LandingPage() {
       <section className="px-6 py-12">
         <AnimatedSection className="mx-auto max-w-2xl text-center">
           <p className="mb-4 text-lg font-medium text-gray-800">
-            There&apos;s a simpler way. One dashboard, all your numbers, no manual work.
+            You work hard. You deserve to know exactly what you&apos;re making for it.
           </p>
           <a
             href={NAV_CTA}
             className="inline-block rounded-full bg-indigo-600 px-7 py-3.5 text-sm font-semibold text-white shadow-[0_8px_32px_rgba(79,70,229,0.35)] transition hover:bg-indigo-700"
           >
-            Get your free financial dashboard →
+            See your real project profit, free →
           </a>
         </AnimatedSection>
       </section>
@@ -401,8 +352,8 @@ export default function LandingPage() {
       {/* ===== CORE FEATURES ===== */}
       <section className="mx-auto max-w-[1200px] px-6 py-32">
         <AnimatedSection className="mb-16 text-center">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-gray-400">How it works</p>
-          <h2 className="text-3xl font-semibold text-gray-900 sm:text-4xl">Everything you need, in one place</h2>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-gray-400">Here&apos;s what changes</p>
+          <h2 className="text-3xl font-semibold text-gray-900 sm:text-4xl">The clarity you&apos;ve been missing</h2>
         </AnimatedSection>
         <div className="space-y-24">
 
@@ -412,10 +363,10 @@ export default function LandingPage() {
               {/* Text — compact intro, aligned to image left edge */}
               <div className="max-w-[520px] lg:relative lg:right-[-80px]">
                 <h2 className="mb-3 text-2xl font-semibold text-gray-900 md:text-3xl">
-                  Send invoices in minutes, not hours.
+                  Get paid without the admin chaos.
                 </h2>
                 <p className="text-base leading-relaxed text-gray-600">
-                  Create, send, and track invoices in one place — without jumping between tools.
+                  Create and send professional invoices in seconds. No more hunting through email threads to check if something&apos;s been paid — it&apos;s all right there.
                 </p>
               </div>
 
@@ -448,10 +399,10 @@ export default function LandingPage() {
               </div>
               <div>
                 <h2 className="mb-4 text-2xl font-semibold text-gray-900 md:text-3xl">
-                  Know exactly what&apos;s yours — and what isn&apos;t.
+                  No more end-of-month panic.
                 </h2>
                 <p className="mb-6 text-base leading-relaxed text-gray-600">
-                  Your numbers update automatically as money comes in and out — so you always know where you stand.
+                  Stop wondering if you can afford to pay yourself. SummitHQ keeps your numbers current so you always know what&apos;s yours — and what&apos;s set aside for tax.
                 </p>
                 <ul className="space-y-2">
                   {[
@@ -472,6 +423,45 @@ export default function LandingPage() {
             </div>
           </AnimatedSection>
 
+          {/* Feature 3: Business dashboard — text left, image right */}
+          <AnimatedSection delay={0.1}>
+            <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+              <div>
+                <h2 className="mb-4 text-2xl font-semibold text-gray-900 md:text-3xl">
+                  Open it and immediately know if it&apos;s been a good month.
+                </h2>
+                <p className="mb-6 text-base leading-relaxed text-gray-600">
+                  Income, expenses, profit, what&apos;s still owed — one screen, no mental arithmetic. The one view your business has always been missing.
+                </p>
+                <ul className="space-y-2">
+                  {[
+                    "Total revenue and profit across all projects",
+                    "Outstanding invoices at a glance",
+                    "Business health updated in real time",
+                  ].map((point) => (
+                    <li key={point} className="flex items-start gap-2.5 text-sm text-gray-600">
+                      <svg className="mt-0.5 h-4 w-4 shrink-0" viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="7" fill="#EEF2FF"/>
+                        <path d="M5 8l2 2 4-4" stroke="#6366F1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="overflow-hidden rounded-2xl border border-gray-200 shadow-lg">
+                <Image
+                  src="/hero-dashboard.png"
+                  alt="SummitHQ business dashboard — income, expenses and profit overview"
+                  width={1366}
+                  height={900}
+                  sizes="(max-width: 1024px) 100vw, 580px"
+                  className="block w-full h-auto contrast-[1.03]"
+                />
+              </div>
+            </div>
+          </AnimatedSection>
+
         </div>
       </section>
 
@@ -479,22 +469,22 @@ export default function LandingPage() {
       <section className="px-6 py-20 sm:py-28">
         <AnimatedSection className="mx-auto max-w-4xl">
           <h2 className="text-center text-2xl font-semibold leading-snug text-slate-900 sm:text-3xl">
-            When you know your numbers, everything gets easier
+            When the fog lifts, everything changes
           </h2>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-3">
             {[
               {
-                title: "Quote with confidence",
-                body: "See your real margins on past projects before pricing the next one. Stop undercharging.",
+                title: "Stop undercharging for your work",
+                body: "You can only price the next project right if you know what the last one actually cost you. Now you will.",
               },
               {
-                title: "Chase what matters",
-                body: "Outstanding invoices are always visible. Know exactly who owes you, and how much.",
+                title: "Never forget what you're owed",
+                body: "Every unpaid invoice is visible. Know exactly who's late and follow up without digging through old emails.",
               },
               {
-                title: "Less guesswork, less stress",
-                body: "One clear view of your finances instead of scattered spreadsheets and rough estimates.",
+                title: "End the month knowing where you stand",
+                body: "No more rough guesses. No more spreadsheet archaeology. Just the truth about your business, always there when you need it.",
               },
             ].map((benefit) => (
               <div
@@ -516,15 +506,18 @@ export default function LandingPage() {
       {/* ===== SOCIAL PROOF ===== */}
       <TestimonialsSection />
 
+      {/* ===== FAQ ===== */}
+      <FAQSection />
+
       {/* ===== FINAL CTA ===== */}
       <section className="px-6 py-28 text-center">
         <AnimatedSection className="mx-auto max-w-2xl">
           <h2 className="text-3xl font-semibold leading-snug text-slate-900 sm:text-4xl">
-            Your finances shouldn&apos;t be a mystery.
+            Stop guessing what you actually made.
           </h2>
 
           <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-slate-600">
-            SummitHQ fixes that in minutes — free forever to get started.
+            Know your real project profit in minutes — free to get started.
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -543,7 +536,7 @@ export default function LandingPage() {
                 hover:bg-indigo-700
               "
             >
-              Get your free financial dashboard →
+              See your real project profit, free →
             </a>
           </div>
 
@@ -551,8 +544,18 @@ export default function LandingPage() {
         </AnimatedSection>
       </section>
 
+      {/* ===== STICKY MOBILE CTA ===== */}
+      <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-slate-200 bg-white/95 px-4 py-3 backdrop-blur-sm sm:hidden">
+        <a
+          href={NAV_CTA}
+          className="block w-full rounded-full bg-indigo-600 py-3.5 text-center text-sm font-semibold text-white shadow-[0_4px_20px_rgba(79,70,229,0.4)] transition hover:bg-indigo-700"
+        >
+          See your real project profit, free →
+        </a>
+      </div>
+
       {/* ===== FOOTER ===== */}
-      <footer className="border-t border-slate-100 px-6 py-10">
+      <footer className="border-t border-slate-100 px-6 pb-24 pt-10 sm:pb-10">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-sm text-slate-500 sm:flex-row">
           <p>© {new Date().getFullYear()} SummitHQ</p>
 
