@@ -36,7 +36,7 @@ export function Nav() {
             href={NAV_CTA}
             className="rounded-full bg-indigo-600 px-5 py-2 text-sm font-semibold text-white shadow-[0_8px_32px_rgba(79,70,229,0.35)] transition hover:bg-indigo-700"
           >
-            Sign up for free
+            Get early access
           </a>
         </div>
       </div>

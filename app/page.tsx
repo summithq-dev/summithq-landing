@@ -13,30 +13,30 @@ const NAV_CTA = "https://app.summithq.co.uk/signup";
 const featureSections = [
   {
     headline: "See the real profit on every project",
-    body: "Open any project and instantly see what you've invoiced, what's been paid, what you've spent, and your actual profit — calculated automatically.",
+    body: "Open any project and see exactly what you invoiced, what you spent, and what you actually kept. No spreadsheets. No mental arithmetic.",
     points: [
-      "Project value, revenue and expenses in one view",
-      "Profit margin calculated for you",
-      "Outstanding invoices tracked per project",
+      "Real profit calculated automatically",
+      "Expenses tracked per project",
+      "Outstanding invoices visible at a glance",
     ],
     screenshot: "/screens/hero.png",
     alt: "Project financial overview in SummitHQ",
   },
   {
-    headline: "Know exactly what's paid and what's outstanding",
-    body: "Create and send invoices in seconds. See every invoice — paid, outstanding, overdue — across all your clients in one place.",
+    headline: "Know what's paid and what's still owed",
+    body: "Create and send invoices in seconds. Every invoice — paid, outstanding, overdue — across all your clients in one place.",
     screenshot: "/screens/invoices-new.png",
     alt: "Invoices page in SummitHQ",
   },
   {
-    headline: "Track every cost that eats into your margin",
-    body: "Log expenses against projects as you go. See your total spend, what's VAT-reclaimable, and exactly how much each cost is affecting your profit.",
+    headline: "See every cost that cuts into your profit",
+    body: "Log expenses against projects as you go. See exactly how much each cost is eating into your margin — before it becomes a problem.",
     screenshot: "/screens/expenses.png",
     alt: "Expenses dashboard in SummitHQ",
   },
   {
-    headline: "Your whole business, at a glance",
-    body: "The SummitHQ dashboard shows income, expenses, net profit, outstanding invoices, and business health — all in one view. No switching tabs, no manual calculations.",
+    headline: "A calm command center for your business",
+    body: "Income, expenses, profit, what's still owed — one screen, no mental arithmetic. Built for freelancers who want clarity, not complexity.",
     screenshot: "/screens/business-dashboard.png",
     alt: "SummitHQ business dashboard",
   },
@@ -229,26 +229,26 @@ export default function LandingPage() {
           {/* Left: Text */}
           <AnimatedSection className="lg:pr-0">
             <p className="mb-4 text-sm text-gray-500">
-              SummitHQ — Project profit tracking for freelancers
+              SummitHQ — Profit clarity for freelancers
             </p>
 
             <h1 className="mb-6 text-4xl font-bold leading-tight tracking-tighter text-gray-900 md:text-5xl">
-              Your project paid £10k. But what did you actually make?
+              You made £10k… but how much did you actually keep?
             </h1>
 
             <p className="mb-5 text-lg leading-relaxed text-gray-700">
-              Most freelancers track revenue. SummitHQ shows you real project profit — after expenses, after time, automatically.
+              Most freelancers track revenue. Very few track real profit. SummitHQ shows you exactly what you&apos;re making — across every project, client, and expense.
             </p>
 
             <a
               href={NAV_CTA}
               className="inline-block rounded-full bg-indigo-600 px-7 py-3.5 text-sm font-semibold text-white shadow-[0_8px_32px_rgba(79,70,229,0.35)] transition hover:bg-indigo-700"
             >
-              See your real project profit, free →
+              Get early access
             </a>
 
             <p className="mt-2 text-sm text-gray-500">
-              No credit card • Takes 2 minutes
+              No spam. No commitment. Just early access.
             </p>
 
             <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-400">
@@ -300,14 +300,14 @@ export default function LandingPage() {
           {/* Left: Text */}
           <AnimatedSection className="space-y-6">
             <h2 className="text-3xl font-semibold leading-snug text-gray-900 md:text-4xl">
-              You&apos;re not bad with money.<br />
-              <span className="font-medium text-gray-500">You just never have the right numbers.</span>
+              Revenue looks good.<br />
+              <span className="font-medium text-gray-500">Profit tells the truth.</span>
             </h2>
             <p className="text-lg leading-relaxed text-gray-600">
-              Work comes in. Invoices go out. Money hits your account. It feels fine.
+              On paper, your business looks like it&apos;s doing well.
             </p>
             <p className="text-lg leading-relaxed text-gray-600">
-              But which projects were actually worth it? Which clients cost you more than they paid? Are you charging enough? What&apos;s left after tax?
+              But when you try to answer &ldquo;what did I actually make?&rdquo; — it gets messy fast.
             </p>
             <p className="text-lg font-semibold text-gray-900">
               Most freelancers never find out. They just keep busy and hope.
@@ -341,13 +341,13 @@ export default function LandingPage() {
       <section className="px-6 py-12">
         <AnimatedSection className="mx-auto max-w-2xl text-center">
           <p className="mb-4 text-lg font-medium text-gray-800">
-            You work hard. You deserve to know exactly what you&apos;re making for it.
+            You work hard. You deserve to know exactly what you&apos;re keeping.
           </p>
           <a
             href={NAV_CTA}
             className="inline-block rounded-full bg-indigo-600 px-7 py-3.5 text-sm font-semibold text-white shadow-[0_8px_32px_rgba(79,70,229,0.35)] transition hover:bg-indigo-700"
           >
-            See your real project profit, free →
+            Get early access
           </a>
         </AnimatedSection>
       </section>
@@ -355,8 +355,8 @@ export default function LandingPage() {
       {/* ===== CORE FEATURES ===== */}
       <section className="mx-auto max-w-[1200px] px-6 py-32">
         <AnimatedSection className="mb-16 text-center">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-gray-400">Here&apos;s what changes</p>
-          <h2 className="text-3xl font-semibold text-gray-900 sm:text-4xl">The clarity you&apos;ve been missing</h2>
+          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-gray-400">One clear view of your business</p>
+          <h2 className="text-3xl font-semibold text-gray-900 sm:text-4xl">Everything you need. Nothing you don&apos;t.</h2>
         </AnimatedSection>
         <div className="space-y-24">
 
@@ -366,10 +366,10 @@ export default function LandingPage() {
               {/* Text — compact intro, aligned to image left edge */}
               <div className="max-w-[520px] lg:relative lg:right-[-80px]">
                 <h2 className="mb-3 text-2xl font-semibold text-gray-900 md:text-3xl">
-                  Get paid without the admin chaos.
+                  Get paid. Know you got paid.
                 </h2>
                 <p className="text-base leading-relaxed text-gray-600">
-                  Create and send professional invoices in seconds. No more hunting through email threads to check if something&apos;s been paid — it&apos;s all right there.
+                  Create and send invoices in seconds. No more chasing email threads to check if something&apos;s been paid — every invoice status is right there.
                 </p>
               </div>
 
@@ -402,16 +402,16 @@ export default function LandingPage() {
               </div>
               <div>
                 <h2 className="mb-4 text-2xl font-semibold text-gray-900 md:text-3xl">
-                  No more end-of-month panic.
+                  Always know what&apos;s yours to keep.
                 </h2>
                 <p className="mb-6 text-base leading-relaxed text-gray-600">
-                  Stop wondering if you can afford to pay yourself. SummitHQ keeps your numbers current so you always know what&apos;s yours — and what&apos;s set aside for tax.
+                  Stop guessing if you can afford to pay yourself. SummitHQ keeps your numbers current so you know what&apos;s safe to spend — and what&apos;s set aside for tax.
                 </p>
                 <ul className="space-y-2">
                   {[
                     "See what's safe to spend at any time",
-                    "Automatically calculate tax set-asides",
-                    "Avoid surprises at tax time",
+                    "Tax set-asides calculated automatically",
+                    "No surprises at year end",
                   ].map((point) => (
                     <li key={point} className="flex items-start gap-2.5 text-sm text-gray-600">
                       <svg className="mt-0.5 h-4 w-4 shrink-0" viewBox="0 0 16 16" fill="none">
@@ -431,15 +431,15 @@ export default function LandingPage() {
             <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
               <div>
                 <h2 className="mb-4 text-2xl font-semibold text-gray-900 md:text-3xl">
-                  Open it and immediately know if it&apos;s been a good month.
+                  Open it and know instantly if it&apos;s been a good month.
                 </h2>
                 <p className="mb-6 text-base leading-relaxed text-gray-600">
-                  Income, expenses, profit, what&apos;s still owed — one screen, no mental arithmetic. The one view your business has always been missing.
+                  Income, expenses, profit, what&apos;s still owed — one screen, no mental arithmetic. The view your business has always needed.
                 </p>
                 <ul className="space-y-2">
                   {[
-                    "Total revenue and profit across all projects",
-                    "Outstanding invoices at a glance",
+                    "Real profit across all projects at a glance",
+                    "Outstanding invoices always visible",
                     "Business health updated in real time",
                   ].map((point) => (
                     <li key={point} className="flex items-start gap-2.5 text-sm text-gray-600">
@@ -472,22 +472,22 @@ export default function LandingPage() {
       <section className="px-6 py-20 sm:py-28">
         <AnimatedSection className="mx-auto max-w-4xl">
           <h2 className="text-center text-2xl font-semibold leading-snug text-slate-900 sm:text-3xl">
-            When the fog lifts, everything changes
+            Make better decisions, faster
           </h2>
 
           <div className="mt-12 grid gap-6 sm:grid-cols-3">
             {[
               {
-                title: "Stop undercharging for your work",
-                body: "You can only price the next project right if you know what the last one actually cost you. Now you will.",
+                title: "Know which clients are worth keeping",
+                body: "You can only price the next project right if you know what the last one actually made you. Now you will.",
               },
               {
-                title: "Never forget what you're owed",
-                body: "Every unpaid invoice is visible. Know exactly who's late and follow up without digging through old emails.",
+                title: "Spot problems before they cost you",
+                body: "Every unpaid invoice is visible. See what's overdue and follow up before it becomes a cash flow problem.",
               },
               {
-                title: "End the month knowing where you stand",
-                body: "No more rough guesses. No more spreadsheet archaeology. Just the truth about your business, always there when you need it.",
+                title: "Plan with confidence instead of guessing",
+                body: "No more rough estimates. No spreadsheet archaeology. Just the truth about your business, always there when you need it.",
               },
             ].map((benefit) => (
               <div
@@ -516,11 +516,11 @@ export default function LandingPage() {
       <section className="px-6 py-28 text-center">
         <AnimatedSection className="mx-auto max-w-2xl">
           <h2 className="text-3xl font-semibold leading-snug text-slate-900 sm:text-4xl">
-            Stop guessing what you actually made.
+            Stop guessing your numbers.
           </h2>
 
           <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-slate-600">
-            Know your real project profit in minutes — free to get started.
+            Join early access and start seeing your real profit clearly.
           </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -539,11 +539,11 @@ export default function LandingPage() {
                 hover:bg-indigo-700
               "
             >
-              See your real project profit, free →
+              Get early access
             </a>
           </div>
 
-          <p className="mt-3 text-sm text-slate-400">Free to start. Upgrade only when it&apos;s worth it to you.</p>
+          <p className="mt-3 text-sm text-slate-400">Takes 30 seconds. No commitment.</p>
         </AnimatedSection>
       </section>
 
