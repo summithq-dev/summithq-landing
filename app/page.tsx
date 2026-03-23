@@ -5,6 +5,8 @@ import { useState } from "react";
 import { AnimatedSection } from "./components/AnimatedSection";
 import { Screenshot } from "./components/Screenshot";
 import { Nav } from "./components/Nav";
+import { MobileBanner } from "./components/MobileBanner";
+import { MobileStickyCTA } from "./components/MobileStickyCTA";
 
 const NAV_CTA = "https://app.summithq.co.uk/signup";
 
@@ -217,6 +219,7 @@ export default function LandingPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-white" />
       </div>
 
+      <MobileBanner />
       <Nav />
 
       {/* ===== HERO ===== */}
@@ -545,14 +548,7 @@ export default function LandingPage() {
       </section>
 
       {/* ===== STICKY MOBILE CTA ===== */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-slate-200 bg-white/95 px-4 py-3 backdrop-blur-sm sm:hidden">
-        <a
-          href={NAV_CTA}
-          className="block w-full rounded-full bg-indigo-600 py-3.5 text-center text-sm font-semibold text-white shadow-[0_4px_20px_rgba(79,70,229,0.4)] transition hover:bg-indigo-700"
-        >
-          See your real project profit, free →
-        </a>
-      </div>
+      <MobileStickyCTA />
 
       {/* ===== FOOTER ===== */}
       <footer className="border-t border-slate-100 px-6 pb-24 pt-10 sm:pb-10">
