@@ -7,6 +7,7 @@ import { Screenshot } from "./components/Screenshot";
 import { Nav } from "./components/Nav";
 import { MobileBanner } from "./components/MobileBanner";
 import { MobileStickyCTA } from "./components/MobileStickyCTA";
+import { BeforeAfterSlider } from "./components/BeforeAfterSlider";
 
 const NAV_CTA = "https://app.summithq.co.uk/signup";
 
@@ -337,6 +338,9 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ===== BEFORE / AFTER SLIDER ===== */}
+      <BeforeAfterSlider />
+
       {/* ===== MID CTA ===== */}
       <section className="px-6 py-12">
         <AnimatedSection className="mx-auto max-w-2xl text-center">
@@ -365,12 +369,28 @@ export default function LandingPage() {
             <div className="flex flex-col gap-8">
               {/* Text — compact intro, aligned to image left edge */}
               <div className="max-w-[520px] lg:relative lg:right-[-80px]">
+                <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-indigo-500">Invoicing</p>
                 <h2 className="mb-3 text-2xl font-semibold text-gray-900 md:text-3xl">
                   Get paid. Know you got paid.
                 </h2>
-                <p className="text-base leading-relaxed text-gray-600">
-                  Create and send invoices in seconds. No more chasing email threads to check if something&apos;s been paid — every invoice status is right there.
+                <p className="mb-5 text-base leading-relaxed text-gray-600">
+                  Create and send professional invoices in seconds. Every invoice — paid, outstanding, overdue — tracked automatically so nothing slips through.
                 </p>
+                <ul className="space-y-2">
+                  {[
+                    "Send invoices in seconds, not minutes",
+                    "See paid, outstanding and overdue at a glance",
+                    "Never lose track of what you're owed",
+                  ].map((point) => (
+                    <li key={point} className="flex items-start gap-2.5 text-sm text-gray-600">
+                      <svg className="mt-0.5 h-4 w-4 shrink-0" viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="7" fill="#EEF2FF"/>
+                        <path d="M5 8l2 2 4-4" stroke="#6366F1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                      {point}
+                    </li>
+                  ))}
+                </ul>
               </div>
 
               {/* Image — dominant, bleeds right */}
@@ -422,45 +442,6 @@ export default function LandingPage() {
                     </li>
                   ))}
                 </ul>
-              </div>
-            </div>
-          </AnimatedSection>
-
-          {/* Feature 3: Business dashboard — text left, image right */}
-          <AnimatedSection delay={0.1}>
-            <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-              <div>
-                <h2 className="mb-4 text-2xl font-semibold text-gray-900 md:text-3xl">
-                  Open it and know instantly if it&apos;s been a good month.
-                </h2>
-                <p className="mb-6 text-base leading-relaxed text-gray-600">
-                  Income, expenses, profit, what&apos;s still owed — one screen, no mental arithmetic. The view your business has always needed.
-                </p>
-                <ul className="space-y-2">
-                  {[
-                    "Real profit across all projects at a glance",
-                    "Outstanding invoices always visible",
-                    "Business health updated in real time",
-                  ].map((point) => (
-                    <li key={point} className="flex items-start gap-2.5 text-sm text-gray-600">
-                      <svg className="mt-0.5 h-4 w-4 shrink-0" viewBox="0 0 16 16" fill="none">
-                        <circle cx="8" cy="8" r="7" fill="#EEF2FF"/>
-                        <path d="M5 8l2 2 4-4" stroke="#6366F1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                      {point}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="overflow-hidden rounded-2xl border border-gray-200 shadow-lg">
-                <Image
-                  src="/hero-dashboard.png"
-                  alt="SummitHQ business dashboard — income, expenses and profit overview"
-                  width={1366}
-                  height={900}
-                  sizes="(max-width: 1024px) 100vw, 580px"
-                  className="block w-full h-auto contrast-[1.03]"
-                />
               </div>
             </div>
           </AnimatedSection>
